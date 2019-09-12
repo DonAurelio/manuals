@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 # coding=utf8
 
-#from datacube.storage import netcdf_writer
-#from datacube.model import Variable
+from datacube.storage import netcdf_writer
+from datacube.model import Variable
 import datacube
 import numpy as np
-from datacube.drivers.netcdf import writer as netcdf_writer
 from datacube.utils.geometry import CRS
 from datacube.utils import geometry, data_resolution_and_offset
 from rasterio.transform import from_bounds
@@ -37,10 +36,7 @@ LOGS_FOLDER = "/web_storage/logs"
 nodata=-9999
 
 
-#def saveNC(output,filename,history):
-#    output.to_netcdf(filename,format='NETCDF3_CLASSIC')
-
-def saveNC(output,filename,history):
+def save_netcdf(output,filename,history):
 
     logging.info('saveNC: dataset {} - {}'.format(
         type(output),output
@@ -100,14 +96,14 @@ def saveNC(output,filename,history):
         if band in coords.keys() or band == 'crs':
             continue
         output.data_vars[band].values[np.isnan(output.data_vars[band].values)]=nodata
-        var= netcdf_writer.create_variable(nco, band, netcdf_writer.Variable(output.data_vars[band].dtype, nodata, cnames, None) ,set_crs=True)
+        var= netcdf_writer.create_variable(nco, band, Variable(output.data_vars[band].dtype, nodata, cnames, None) ,set_crs=True)
         var[:] = netcdf_writer.netcdfy_data(output.data_vars[band].values)
     nco.close()
 
     end = time.time()
     logging.info('TIEMPO SALIDA NC:' + str((end - start)))
 
-def readNetCDF(file):
+def read_netcdf(file):
 
     start = time.time()
     try:
@@ -179,7 +175,7 @@ def calculate_bounds_geotransform(dataset):
 
 
 
-def write_geotiff_from_xr(tif_path, dataset, bands=[], no_data=-9999, crs="EPSG:4326"):
+def save_geotiff(dataset,tif_path,bands=[], no_data=-9999, crs="EPSG:4326"):
 
     """Write a geotiff from an xarray dataset.
 
