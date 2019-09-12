@@ -27,7 +27,7 @@ then
 	threads=$( expr $(grep -c ^processor /proc/cpuinfo) - 1)
 	if [ $threads -eq 0 ] ; then $threads = 1; fi
 
-	export GDAL_DATA="${GDAL_DATA:-/usr/share/gdal/1.11}"
+	export GDAL_DATA="${GDAL_DATA:-/usr/share/gdal/2.3}"
 	nimg=0
 
 	echo "=> Entry into the $baseIngestPath"
@@ -45,7 +45,7 @@ then
 		rm -v -f $folder/*toa*
 
 		echo "=> Create image metadata and performing datacube add in $folder folder"
-		python $matadataPrepareScript $folder && datacube dataset add -a $folder
+		python3 $matadataPrepareScript $folder && datacube dataset add -a $folder
 
 		((nimg++))
 		if(( $nimg % 18 == 0 ))
