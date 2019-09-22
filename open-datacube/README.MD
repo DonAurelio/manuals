@@ -12,3 +12,8 @@
 # Credits
 
 This documentation was elaborated based on the experiences adquired at the Colombian Open Datacube Proyect developed by Universidad de los Andes, Bogotá, Colombia.
+
+# References 
+
+1. [View Landsat 8 imagery for a chosen time period](http://geoscienceaustralia.github.io/digitalearthau/notebooks/09_Workflows/RetrieveLandsat8ViewAndExport.html)
+2. [netCDF4 module](https://unidata.github.io/netcdf4-python/netCDF4/index.html)
