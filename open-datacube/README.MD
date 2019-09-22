@@ -20,3 +20,4 @@ This documentation was elaborated based on the experiences adquired at the Colom
 3. [Lesson 1. Export Numpy Arrays to Geotiff Format Using Rasterio and Python](https://www.earthdatascience.org/courses/earth-analytics-python/multispectral-remote-sensing-in-python/export-numpy-array-to-geotiff-in-python/)
 4. [Calculate NDVI using rasterio](http://www.loicdutrieux.net/pyLandsat/NDVI_calc.html)
 5. [Coordinate Reference Systems](https://docs.qgis.org/testing/en/docs/gentle_gis_introduction/coordinate_reference_systems.html)
+6. [Open Datacube Jupyter Notebooks](https://datacube-core.readthedocs.io/en/stable/user/guide.html)
