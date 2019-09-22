@@ -145,7 +145,7 @@ def calculate_bounds_geotransform(dataset):
         _crs = CRS(str(crs_dict['attrs']['spatial_ref']))
 
     # Leave the CRS as it is (datacube CRS object)
-    elif isinstance(dataset.crs,datacube.utils.geometry._base.CRS):
+    elif isinstance(dataset.crs,datacube.utils.geometry.CRS):
         _crs = dataset.crs
 
     else:
@@ -215,7 +215,7 @@ def save_geotiff(dataset,tif_path,bands=[], no_data=-9999, crs="EPSG:4326"):
         crs_dict = dataset.crs.to_dict()
         crs = CRS_rasterio.from_wkt(crs_dict['attrs']['crs_wkt'])
 
-    elif isinstance(dataset.crs,datacube.utils.geometry._base.CRS):
+    elif isinstance(dataset.crs,datacube.utils.geometry.CRS):
         crs = CRS_rasterio.from_string(dataset.crs.crs_str)
     else:
         raise Exception('dataset.crs datatype not know (please check calculate_bounds_geotransform)')
