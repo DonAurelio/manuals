@@ -92,7 +92,7 @@ echo "Status munge"
 systemctl status munge
 
 echo "Status slurmctld"
-systemctl start slurmctld
+systemctl status slurmctld
 
 echo "Status slurmd"
-systemctl start slurmd
+systemctl status slurmd
