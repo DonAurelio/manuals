@@ -89,10 +89,10 @@ echo "Set master node status as idle"
 scontrol update nodename=localhost state=idle
 
 echo "Status munge"
-systemctl status munge
+systemctl status -l --no-pager munge
 
 echo "Status slurmctld"
-systemctl status slurmctld
+systemctl status -l --no-pager slurmctld
 
 echo "Status slurmd"
-systemctl status slurmd
+systemctl status -l --no-pager slurmd
